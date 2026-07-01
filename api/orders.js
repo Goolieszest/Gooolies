@@ -54,9 +54,6 @@ async function createOrder(req, res) {
   }
 }
 
-// Simple admin auth: requires an ?password= query param matching ADMIN_PASSWORD env var.
-// This is intentionally lightweight — fine for a small single-owner store, not
-// enterprise-grade auth. Swap for a real login system if you need multiple staff logins.
 async function listOrders(req, res) {
   const { password } = req.query;
   if (!process.env.ADMIN_PASSWORD || password !== process.env.ADMIN_PASSWORD) {
@@ -78,4 +75,4 @@ async function listOrders(req, res) {
   } catch (err) {
     return res.status(500).json({ error: 'Server error fetching orders' });
   }
-      }
+}
